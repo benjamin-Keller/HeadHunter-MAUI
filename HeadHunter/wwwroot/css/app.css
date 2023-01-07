@@ -29,12 +29,15 @@ a, .btn-link {
 }
 
 .valor-card {
-    width: 30%;
+    min-width: 335px;
     height: 300px;
     border: var(--red-border);
-    padding: 0.5rem;
+    padding: 1rem;
     background-color: var(--blue);
 }
+    .valor-card .valor-title {
+        font-size: 1.5rem;
+    }
 
 .valid.modified:not([type=checkbox]) {
     outline: 1px solid #26b050;

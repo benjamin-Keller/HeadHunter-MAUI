@@ -1,13 +1,13 @@
-﻿<h4>@Title</h4>
+﻿<div class="valor-title">@Title</div>
 
 <div class="timeline-wrapper">
     <ul class="timeline">
         @foreach (var model in Events ?? new())
         {
-                <li>
-                    <div>@model.DisplayName</div>
-                    <div class="secondary-text">@model.StartTime.ToString("dd MMM yyyy") - @model.EndTime.ToString("dd MMM yyyy")</div>
-                </li>
+            <li @onclick="@(async () => await OnEventClick(model))">
+                <div>@model.DisplayName</div>
+                @*<div class="secondary-text">@model.StartTime.ToString("dd MMM yyyy") - @model.EndTime.ToString("dd MMM yyyy")</div>*@
+            </li>
         }
     </ul>
 </div>

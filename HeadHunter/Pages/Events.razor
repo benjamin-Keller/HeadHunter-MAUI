@@ -1,6 +1,21 @@
 ﻿@page "/events"
 @using HeadHunter.Components
 
-<div class="valor-card" style="height: 650px;">
-    <Timeline Title="Events" Events="@EventsData.Data" />
+<div class="d-flex gap-4 flex-wrap">
+    <section class="valor-card" style="height: calc(100vh - (4rem + var(--appbar-height)));">
+        <Timeline Title="Events" Events="@EventsData.Data" OnEventSelected="@selectedEvent" />
+    </section>
+
+    <section class="valor-card" style="height: calc(100vh - (4rem + var(--appbar-height))); flex: 1 0 auto;">
+        @if (EventData == default)
+        {
+            <div class="valor-title">Select an Event to show details about it!</div>
+        }
+        else
+        {
+            <div class="valor-title">@EventData?.DisplayName</div>
+            <div>@EventData?.StartTime.ToString("dd MMM yyyy") - @EventData?.EndTime.ToString("dd MMM yyyy")</div>
+            <div>@EventData?.Uuid</div>
+        }
+    </section>
 </div>
