@@ -1,0 +1,10 @@
+﻿:root {
+    --primary: #FD4556;
+    --secondary: #BD3944;
+    --accent: #53212B;
+    --blue: #0c1824;
+    --background: #070f16;
+    --appbar-height: 56px;
+    --font-color: #b2b2b2;
+    --red-border: 3px solid var(--primary);
+}
