@@ -7,7 +7,6 @@ namespace HeadHunter.Pages;
 public partial class Events
 {
     [Inject] private EventsService eventsService { get; set; }
-
     private EventsModel EventsData { get; set; } = new();
     private EventData EventData { get; set; } = default;
 

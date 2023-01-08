@@ -7,7 +7,6 @@ namespace HeadHunter.Pages;
 public partial class Index
 {
     [Inject] private EventsService eventsService { get; set; }
-
     private EventsModel EventsData { get; set; } = new();
 
     protected override async Task OnInitializedAsync()
