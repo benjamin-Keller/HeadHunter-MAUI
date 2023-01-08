@@ -1,5 +1,5 @@
 namespace HeadHunter.Pages;
 
-public partial class Shop
+public partial class Store
 {
 }
