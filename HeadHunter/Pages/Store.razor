@@ -1,3 +1,24 @@
-﻿<h3>Store</h3>
+﻿@page "/store"
+@using HeadHunter.Components.Store
+<div>
+    @if (_levels.Any() && !_showItem)
+    {
+        <div class="d-flex gap-2 justify-content-between">
+            @foreach (var level in _levels)
+            {
+                <FeaturedItem Data="level" FeaturedItemClicked="@SelectWeaponLevel" />
+            }
+        </div>
+    }
+    @if (_showItem)
+    {
+        <div class="valor-card" style="height: calc(100vh - (4rem + var(--appbar-height)));">
+            <div class="d-flex justify-content-end"><button class="btn btn-primary" @onclick="@HideDrilldown">Back</button></div>
+            <div class="d-flex justify-content-center">
+                <img src="@_selectedWeapon.DisplayIcon" width="400" />
+            </div>
+            <div class="valor-title">@_selectedWeapon.DisplayName</div>
 
-
+        </div>
+    }
+</div>

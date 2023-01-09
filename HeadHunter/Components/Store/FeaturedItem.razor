@@ -1,0 +1,4 @@
+﻿<div class="featured-item" @onclick="@(async () => await FeaturedItemClicked.InvokeAsync(Data))">
+    <img src="@Data.DisplayIcon" width="200" />
+    <div>@Data.DisplayName</div>
+</div>

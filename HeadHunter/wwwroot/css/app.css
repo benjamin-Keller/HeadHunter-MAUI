@@ -17,12 +17,19 @@ h1 {
 a, .btn-link {
     color: var(--primary);
 }
+    a:hover, .btn-link:hover {
+        color: var(--secondary);
+    }
 
 .btn-primary {
     color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
+    background-color: var(--primary);
+    border-color: var(--primary);
 }
+    .btn-primary:hover {
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+    }
 
 .content {
     padding-top: 2rem;

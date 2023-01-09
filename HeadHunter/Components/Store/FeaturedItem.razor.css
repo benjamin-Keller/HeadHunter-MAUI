@@ -1,0 +1,22 @@
+﻿.featured-item {
+    border: var(--red-border);
+    border-radius: 8px;
+    position: relative;
+    padding: 1rem;
+    background-image: linear-gradient(359deg, var(--accent), transparent);
+}
+.featured-item:hover {
+    background-color: var(--accent);
+    cursor: pointer;
+}
+    .featured-item img {
+        width: 200px;
+        image-rendering: optimizeQuality;
+    }
+
+    .featured-item span {
+        font-size: smaller;
+        /*position: absolute;*/
+        left: 10px;
+        bottom: 10px;
+    }
