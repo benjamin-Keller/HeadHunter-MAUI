@@ -1,0 +1,8 @@
+﻿<div class="featured-item" @onclick="@(async () => await FeaturedItemClicked.InvokeAsync(Data))">
+    <div class="d-flex justify-content-center" style="@(Data.DisplayName.ToLower().Contains("classic") ? "height: 80%;" : "")">
+        <img src="@Data.DisplayIcon" />
+    </div>
+    <div style="position: absolute; bottom: 0.5rem;">
+        @Data.DisplayName
+    </div>
+</div>

@@ -50,8 +50,23 @@
     </ItemGroup>
 
     <ItemGroup>
+        <PackageReference Include="Blazored.SessionStorage" Version="2.3.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Library\" />
+      <Folder Include="wwwroot\js\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="BouncyCastle.Crypto">
+        <HintPath>Library\BouncyCastle.Crypto.dll</HintPath>
+      </Reference>
+      <Reference Include="RiotCloudflareAuthFix">
+        <HintPath>Library\RiotCloudflareAuthFix.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>
