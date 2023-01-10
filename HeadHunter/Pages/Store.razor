@@ -3,7 +3,25 @@
 <div>
     @if (_levels.Any() && !_showItem)
     {
-        <div class="d-flex gap-2 justify-content-between">
+        <div class="featured-bundle">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @for (var i = 0; i < _promotedBundle.Count(); i++)
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+                    }
+                </ol>
+                <div class="carousel-inner">
+                    @foreach (var bundle in _promotedBundle)
+                    {
+                        <div class="carousel-item @(bundle == _promotedBundle.FirstOrDefault() ? "active" : "")">
+                            <img class="d-block w-100" src="@bundle">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-evenly flex-wrap featured-items">
             @foreach (var level in _levels)
             {
                 <FeaturedItem Data="level" FeaturedItemClicked="@SelectWeaponLevel" />
@@ -12,7 +30,7 @@
     }
     @if (_showItem)
     {
-        <div class="valor-card" style="height: calc(100vh - (4rem + var(--appbar-height)));">
+        <div class="valor-card" style="height: calc(100vh - (4rem + var(--appbar-height))); padding-top: 0.25rem;">
             <div class="d-flex justify-content-end"><button class="btn btn-primary" @onclick="@HideDrilldown">Back</button></div>
             <div class="d-flex justify-content-center">
                 <img src="@_selectedWeapon.DisplayIcon" width="400" />

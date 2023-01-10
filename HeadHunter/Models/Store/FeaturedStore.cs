@@ -11,48 +11,6 @@ public class FeaturedStore
     public SkinsPanelLayout SkinsPanelLayout { get; set; }
 }
 
-public class Bundle
-{
-    [JsonProperty("ID")]
-    public string ID { get; set; }
-
-    [JsonProperty("DataAssetID")]
-    public string DataAssetID { get; set; }
-
-    [JsonProperty("CurrencyID")]
-    public string CurrencyID { get; set; }
-
-    [JsonProperty("Items")]
-    public List<ItemData> Items { get; set; }
-
-    [JsonProperty("DurationRemainingInSeconds")]
-    public int DurationRemainingInSeconds { get; set; }
-
-    [JsonProperty("WholesaleOnly")]
-    public bool WholesaleOnly { get; set; }
-}
-
-public class Bundle2
-{
-    [JsonProperty("ID")]
-    public string ID { get; set; }
-
-    [JsonProperty("DataAssetID")]
-    public string DataAssetID { get; set; }
-
-    [JsonProperty("CurrencyID")]
-    public string CurrencyID { get; set; }
-
-    [JsonProperty("Items")]
-    public List<ItemData> Items { get; set; }
-
-    [JsonProperty("DurationRemainingInSeconds")]
-    public int DurationRemainingInSeconds { get; set; }
-
-    [JsonProperty("WholesaleOnly")]
-    public bool WholesaleOnly { get; set; }
-}
-
 public class FeaturedBundle
 {
     [JsonProperty("Bundle")]

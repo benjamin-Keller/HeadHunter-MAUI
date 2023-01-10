@@ -6,6 +6,7 @@ namespace HeadHunter.Data;
 public class WeaponsService
 {
     private readonly HttpClient _httpClient;
+    private IEnumerable<WeaponMetadata> _weaponCache { get; set; }
 
     public WeaponsService(HttpClient httpClient)
     {
