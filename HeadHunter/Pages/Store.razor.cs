@@ -8,7 +8,6 @@ namespace HeadHunter.Pages;
 
 public partial class Store
 {
-    [Inject] private AuthService _authService { get; set; }
     [Inject] private StoreService _storeService { get; set; }
     [Inject] private WeaponsService _weaponsService { get; set; }
     private IEnumerable<string> _promotedBundle { get; set; }
@@ -18,9 +17,7 @@ public partial class Store
 
     protected override async Task OnInitializedAsync()
     {
-        var riotUser = new RiotUser ();
-        var userInfo = await _authService.AuthenticateAsync(riotUser);
-        (_promotedBundle, _levels) = await _storeService.GetStoreItemsAsync(userInfo);
+        (_promotedBundle, _levels) = await _storeService.GetStoreItemsAsync();
     }
 
     private void SelectWeaponLevel(Level selectedWeapon)
