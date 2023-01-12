@@ -6,6 +6,6 @@
     }
     else
     {
-        <div>@_stateContainer.Username</div>
+        <div title="Logout" @onclick="@(() => HandleLogoutAsync())">@_stateContainer.Username</div>
     }
 </div>

@@ -13,6 +13,7 @@ public partial class AppBar
     [Inject] private ILocalStorageService _localStorage { get; set; }
     private string _userName { get; set; }
     private void OpenLoginManagerAsync() => _navigationManager.NavigateTo("/login");
+    private async Task StateContainer_OnChangeAsync() => StateHasChanged();
 
     protected override async Task OnInitializedAsync()
     {
@@ -29,5 +30,14 @@ public partial class AppBar
         await StateContainer_OnChangeAsync();
     }
 
-    private async Task StateContainer_OnChangeAsync() => StateHasChanged();
+    private async Task HandleLogoutAsync()
+    {
+        var _username = await _localStorage.GetItemAsync<string>("username");
+        if (!string.IsNullOrWhiteSpace(_username))
+        {
+            await _localStorage.RemoveItemsAsync(new[] { "username", "puuid", "access_token", "entitlement_token", "region" });
+            _navigationManager.NavigateTo("/", true);
+            await StateContainer_OnChangeAsync();
+        }
+    }
 }
