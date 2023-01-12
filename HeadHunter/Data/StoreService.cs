@@ -1,9 +1,7 @@
-﻿using Blazored.SessionStorage;
+﻿using Blazored.LocalStorage;
 using HeadHunter.Models.Auth;
 using HeadHunter.Models.Store;
 using HeadHunter.Models.Weapons;
-using RiotCloudflareAuthFix;
-using System.Net;
 using System.Net.Http.Json;
 
 namespace HeadHunter.Data;
@@ -12,26 +10,26 @@ public class StoreService
 {
     private readonly HttpClient _client;
     private readonly WeaponsService _weaponsService;
-    private readonly ISessionStorageService _sessionStorage;
+    private readonly ILocalStorageService _localStorage;
     private UserInfo _userInfo;
     private IEnumerable<WeaponMetadata> _weaponCache { get; set; }
 
-    public StoreService(HttpClient client, WeaponsService weaponsService, ISessionStorageService sessionStorage)
+    public StoreService(HttpClient client, WeaponsService weaponsService, ILocalStorageService localStorage)
     {
         _client = client;
         _client.DefaultRequestHeaders.Add("X-Curl-Source", "Api");
         _weaponsService = weaponsService;
-        _sessionStorage = sessionStorage;
+        _localStorage = localStorage;
     }
 
-    public async Task<Store> GetFeaturedStoreAsync(UserInfo user)
+    public async Task<Store> GetFeaturedStoreAsync()
     {
-        var accessToken = await _sessionStorage.GetItemAsync<string>("access_token");
-        var entitlement = await _sessionStorage.GetItemAsync<string>("entitlement_token");
-        var region = await _sessionStorage.GetItemAsync<string>("region");
+        var puuid = await _localStorage.GetItemAsync<string>("puuid");
+        var accessToken = await _localStorage.GetItemAsync<string>("access_token");
+        var entitlement = await _localStorage.GetItemAsync<string>("entitlement_token");
+        var region = await _localStorage.GetItemAsync<string>("region");
 
-        var url = new Uri($"https://pd.{region}.a.pvp.net/store/v2/storefront/{user.Sub}");
-
+        var url = new Uri($"https://pd.{region}.a.pvp.net/store/v2/storefront/{puuid}");
         _client.DefaultRequestHeaders.Add("Authorization", $"Bearer {accessToken}");
         _client.DefaultRequestHeaders.Add("X-Riot-Entitlements-JWT", $"{entitlement}");
         return await _client.GetFromJsonAsync<Store>(url);
@@ -44,9 +42,9 @@ public class StoreService
         return _bundleData.Data;
     }
 
-    public async Task<(IEnumerable<string> FeaturedBundles, IEnumerable<Level> StoreItems)> GetStoreItemsAsync(UserInfo user)
+    public async Task<(IEnumerable<string> FeaturedBundles, IEnumerable<Level> StoreItems)> GetStoreItemsAsync()
     {
-        var _store = await GetFeaturedStoreAsync(user);
+        var _store = await GetFeaturedStoreAsync();
         var _skins = await _weaponsService.GetWeaponSkinByUuidAsync(_store.SkinsPanelLayout?.SingleItemOffers);
         var _bundles = _store.FeaturedBundle?.Bundles;
         var _bundleData = await GetBundleDataAsync();

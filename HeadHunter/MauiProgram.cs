@@ -2,6 +2,8 @@
 using HeadHunter.Data;
 using HeadHunter.Data.Handlers;
 using Blazored.SessionStorage;
+using Blazored.LocalStorage;
+using HeadHunter.Resources;
 
 namespace HeadHunter;
 
@@ -19,12 +21,14 @@ public static class MauiProgram
 
 		builder.Services.AddMauiBlazorWebView();
         builder.Services.AddBlazoredSessionStorage();
+        builder.Services.AddBlazoredLocalStorage();
 
 #if DEBUG
         builder.Services.AddBlazorWebViewDeveloperTools();
 		builder.Logging.AddDebug();
 #endif
 		
+        builder.Services.AddSingleton<StateContainer>();
         builder.Services.AddTransient<HttpClient>();
         builder.Services.AddTransient<EventsService>();
         builder.Services.AddTransient<LockfileService>();

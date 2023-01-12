@@ -1,0 +1,11 @@
+﻿<div class="top-row px-4 appbar-items">
+    <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+    @if (string.IsNullOrWhiteSpace(_stateContainer.Username))
+    {
+        <div @onclick="@(() => OpenLoginManagerAsync())">Login</div>
+    }
+    else
+    {
+        <div title="Logout" @onclick="@(() => HandleLogoutAsync())">@_stateContainer.Username</div>
+    }
+</div>

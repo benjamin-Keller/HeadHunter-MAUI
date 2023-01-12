@@ -1,0 +1,21 @@
+﻿@page "/login"
+
+<div class="d-flex gap-3 flex-wrap">
+    <section class="valor-card" style="height: calc(100vh - (2rem + var(--appbar-height)));">
+        <div class="" @onclick="@(() => SetLoginType(LoginType.Local))">Local Login</div>
+        <div class="" @onclick="@(() => SetLoginType(LoginType.Riot))">Riot Client</div>
+    </section>
+
+    <section class="valor-card" style="height: calc(100vh - (2rem + var(--appbar-height))); flex: 1 0 auto;">
+        @switch (_loginType)
+        {
+            case (LoginType.Local):
+                <div class="valor-title">Local login</div>
+                <LocalLogin />
+                break;
+            case (LoginType.Riot):
+                <div class="valor-title">Riot login</div>
+                break;
+        }
+    </section>
+</div>

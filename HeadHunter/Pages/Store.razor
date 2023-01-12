@@ -1,7 +1,7 @@
 ﻿@page "/store"
 @using HeadHunter.Components.Store
 <div>
-    @if (_levels.Any() && !_showItem)
+    @if (_levels.Any() && !_showItem && !string.IsNullOrWhiteSpace(_stateContainer.Username))
     {
         <div class="featured-bundle">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -38,5 +38,10 @@
             <div class="valor-title">@_selectedWeapon.DisplayName</div>
 
         </div>
+    }
+
+    @if (string.IsNullOrWhiteSpace(_stateContainer.Username))
+    {
+        <p style="font-size: 1.5rem">Sign in to see Featured Store!</p>
     }
 </div>
