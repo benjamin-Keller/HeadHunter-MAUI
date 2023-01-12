@@ -1,0 +1,14 @@
+﻿<EditForm Model="@_loginModel" OnSubmit="@HandleSubmitAsync">
+    <label for="username" class="form-label">Username</label>
+    <InputText id="username" @bind-Value="@_loginModel.Username" class="form-control" />
+
+    <label for="password" class="form-label">Password</label>
+    <InputText id="password" @bind-Value="@_loginModel.Password" type="password" class="form-control" />
+
+    <div class="form-check">
+        <InputCheckbox id="rememberMe" @bind-Value="@_loginModel.RememberMe" class="form-check-input" />
+        <label class="form-check-label" for="rememberMe">Remember me</label>
+    </div>
+
+    <button type="submit">Submit</button>
+</EditForm>
