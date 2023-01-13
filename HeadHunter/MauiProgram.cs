@@ -36,7 +36,7 @@ public static class MauiProgram
         builder.Services.AddTransient<AuthHandler>();
         builder.Services.AddTransient<StoreService>();
         builder.Services.AddTransient<WeaponsService>();
-        builder.Services.AddSingleton<WeatherForecastService>();
+        builder.Services.AddTransient<PregameService>();
 
 		return builder.Build();
 	}
